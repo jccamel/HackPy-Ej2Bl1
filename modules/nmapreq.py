@@ -80,3 +80,4 @@ def nmap_analisis(target):
                     print '\t\tMethods allow:%s' % r.headers['Allow']
                 except:
                     print '\t\tNo method OPTIONS Allowed'
+
