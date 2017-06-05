@@ -67,14 +67,15 @@ def nmap_analisis(target):
         # print "\tHost: " + host.host
         # print "\tState: " + host.state
         for openPort in host.openPorts:
-            print "\t(%s) %s - State: %s" % (
-                str(openPort.name), str(openPort.port), openPort.state)
-            if str(openPort.name) == 'http':
-                if str(openPort.port) == '443':
-                    url = 'https://%s:%s/' % (url, str(openPort.port))
+            print "\t(%s) %s - State: %s" % (str(openPort.name), str(openPort.port), openPort.state)
+            if str(openPort.name) == 'http' or str(openPort.name) == 'https':
+                url = ""
+                if openPort.port == 443:
+                    url = 'https://%s:%s/' % (target, str(openPort.port))
                 else:
-                    url = 'http://%s:%s/' % (url, str(openPort.port))
+                    url = 'http://%s:%s/' % (target, str(openPort.port))
                 try:
+                    print "\t\tURL: %s" % url
                     r = requests.options(url)
                     print '\t\tMethods allow:%s' % r.headers['Allow']
                 except:
