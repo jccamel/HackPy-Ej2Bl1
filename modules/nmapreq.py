@@ -59,7 +59,7 @@ def parseNmapScan(scan):
 
 
 def nmap_analisis(target):
-    print "\tNMAP Scan >>>>>>>>>>>>>>>>>>>"
+    print "\tNMAP Scan >>>>>>>>>>>>>>>>>>>>>"
     nm = nmap.PortScanner()
     nm.scan(target, arguments="-sS")
     structureNmap = parseNmapScan(nm)
